@@ -12,7 +12,7 @@ namespace KontoBankowe
             //tworzenie automatu do wplat
             Automat automat = new Automat();
 
-            automat.WrzucMonete(kontoBankowe.numer, "0.5");
+            automat.WrzucMonete(kontoBankowe, "0.5");
 
             Console.WriteLine(kontoBankowe.StanKonta());
         }
