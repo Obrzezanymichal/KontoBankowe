@@ -1,44 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
+using KontoNaMonety;
 
-namespace KontoBankowe
+namespace KontoNaMonety
 {
     internal class Automat
     {
+        private readonly decimal[] PrzyjmowaneMonety = { 0.5m, 1m, 2m, 5m, 0.20m, 0.10m };
         private int _iloscMonet;
-        private readonly decimal[] _przyjmowaneMonety = new decimal[] { 5, 2, 1, 0.5m, 0.2m, 0.1m };
 
-        public void WrzucMonete(KontoBankowe konto, string wartoscMonety)
+        public void Wrzucmonete(string wartoscMonety, KontoBankowe konto)
         {
-            //sprawdzamy czy monetete da sie wogole sparsowac na jakis decimal
-            bool czyUdanyParse = decimal.TryParse(wartoscMonety, out decimal wartosc);
+            bool czyPoprawna = decimal.TryParse(wartoscMonety, CultureInfo.InvariantCulture, out decimal wartosc);
 
-            if (!czyUdanyParse)
+            if (!czyPoprawna)
             {
-                Console.WriteLine("Wrzucono niepoprwna monete.");
+                Console.WriteLine("Nieprawidłowa wartość monety.");
                 return;
             }
-            //srprwadz czy monety sa z zakresu -przyjmowaneMonety
 
-            foreach (decimal nominal in _przyjmowaneMonety)
+            foreach (decimal nominal in PrzyjmowaneMonety)
             {
-                //jezeli tak, to zw9eksz saldo konta 
-                if (wartoscMonety == nominal)
+                if (wartosc == nominal)
                 {
-                    konto.Saldo += nominal;
+                    konto.Wplac(nominal);
                     _iloscMonet++;
+                    return;
                 }
             }
-        
 
-
-
-
-
-            //Console.WriteLine("wrzucono monete o wartosci: " + wartosc);
-            //dodaj kwote do konta
-            //konto.Saldo += wartoscMonety;
+            Console.WriteLine("Nieprawidłowa moneta.");
         }
     }
 }

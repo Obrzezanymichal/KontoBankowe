@@ -1,20 +1,22 @@
-﻿using System.Runtime.InteropServices;
-
-namespace KontoBankowe
+﻿namespace KontoNaMonety
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            //tworzenie konta
+            // Tworzenie konta
             KontoBankowe kontoBankowe = new KontoBankowe();
 
-            //tworzenie automatu do wplat
+            // Tworzenie automatu do wpłat
+            KontoBankowe konto = new KontoBankowe();
             Automat automat = new Automat();
 
-            automat.WrzucMonete(kontoBankowe, "0.5");
+            automat.Wrzucmonete("5", konto);
+            automat.Wrzucmonete("2", konto);
 
-            Console.WriteLine(kontoBankowe.StanKonta());
+
+            // Wyświetlamy stan konta (jeszcze nie zrobione)
+            Console.WriteLine("Stan konta: " + konto.StanKonta() + " zł");
         }
     }
 }
