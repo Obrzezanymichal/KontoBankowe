@@ -14,22 +14,24 @@
             Automat automat = new Automat();
 
             KontoBankowe konto2 = new KontoBankowe();
-            KontoBankowe konto4 = new KontoBankowe();
+            Console.WriteLine("Numer konta 1: " + konto1.Numer);
+            Console.WriteLine("Numer konta 2: " + konto2.Numer);
 
 
             automat.Wrzucmonete("5", konto1);
             automat.Wrzucmonete("2", konto1);
+            automat.Wrzucmonete("0.5", konto1);
+            automat.Wrzucmonete("3", konto1);
 
             automat.Wrzucmonete("2", konto2);
+            automat.Wrzucmonete("abc", konto2);
 
-            automat.Wrzucmonete("2", konto4);
-            automat.Wrzucmonete("3", konto4);
 
 
             // Wyświetlamy stan konta (jeszcze nie zrobione)
             Console.WriteLine("Stan konta1: " + konto1.StanKonta() + " zł");
             Console.WriteLine("Stan konta2: " + konto2.StanKonta() + " zł");
-            Console.WriteLine("Stan konta4: " + konto4.StanKonta() + " zł");
+            
         }
     }
 }

@@ -11,7 +11,7 @@ namespace KontoNaMonety
         
 
         private decimal _saldo = 0m;
-        private string _numer; //generuje sie automaycznie
+        private string _numer; 
 
         public string Numer
         {
