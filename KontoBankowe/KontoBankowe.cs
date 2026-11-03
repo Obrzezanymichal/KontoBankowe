@@ -13,6 +13,16 @@ namespace KontoNaMonety
         private decimal _saldo = 0m;
         private string _numer; //generuje sie automaycznie
 
+        public string Numer
+        {
+            get { return _numer; }
+        }
+        public KontoBankowe()
+        {
+            licznikKont++;
+            _numer = licznikKont.ToString();
+        }
+
 
         public decimal StanKonta()
         {

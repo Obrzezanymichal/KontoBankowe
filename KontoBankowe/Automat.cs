@@ -11,25 +11,33 @@ namespace KontoNaMonety
 
         public void Wrzucmonete(string wartoscMonety, KontoBankowe konto)
         {
-            bool czyPoprawna = decimal.TryParse(wartoscMonety, CultureInfo.InvariantCulture, out decimal wartosc);
+            bool czyPoprawna = decimal.TryParse(
+                wartoscMonety,
+                CultureInfo.InvariantCulture,
+                out decimal wartosc
+            );
 
+            // Sprawdzamy, czy tekst jest liczbą
             if (!czyPoprawna)
             {
-                Console.WriteLine("Nieprawidłowa wartość monety.");
+                Console.WriteLine("Nieudany odczyt.");
                 return;
             }
 
+            // Sprawdzamy, czy automat przyjmuje taki nominał
             foreach (decimal nominal in PrzyjmowaneMonety)
             {
                 if (wartosc == nominal)
                 {
                     konto.Wplac(nominal);
                     _iloscMonet++;
+
+                    Console.WriteLine("Moneta przyjęta: " + nominal + " zł");
                     return;
                 }
             }
 
-            Console.WriteLine("Nieprawidłowa moneta.");
+            Console.WriteLine("Zła moneta.");
         }
     }
 }
