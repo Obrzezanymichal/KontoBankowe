@@ -31,7 +31,11 @@
             // Wyświetlamy stan konta (jeszcze nie zrobione)
             Console.WriteLine("Stan konta1: " + konto1.StanKonta() + " zł");
             Console.WriteLine("Stan konta2: " + konto2.StanKonta() + " zł");
-            
+            Console.WriteLine("HISTORIA KONTA1");
+            konto1.HistoriaWplat();
+            Console.WriteLine("HISTORIA KONTA2");
+            konto2.HistoriaWplat();
+
         }
     }
 }

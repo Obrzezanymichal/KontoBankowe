@@ -11,8 +11,9 @@ namespace KontoNaMonety
         
 
         private decimal _saldo = 0m;
-        private string _numer; 
+        private string _numer;
 
+        private List<decimal> _historiaWplat = new List<decimal>();
         public string Numer
         {
             get { return _numer; }
@@ -34,6 +35,16 @@ namespace KontoNaMonety
             if (kwota > 0)
             {
                 _saldo += kwota;
+                _historiaWplat.Add(kwota);
+            }
+        }
+        public void HistoriaWplat()
+        {
+            Console.WriteLine("Liczba wpłat: " + _historiaWplat.Count);
+
+            foreach (decimal kwota in _historiaWplat)
+            {
+                Console.WriteLine("Wpłacono: " + kwota + " zł");
             }
         }
     }
